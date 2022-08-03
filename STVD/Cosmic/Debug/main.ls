@@ -33,49 +33,49 @@
  116  0023 48            	sll	a
  117  0024 a460          	and	a,#96
  118  0026 1401          	and	a,(OFST-1,sp)
- 119  0028 c70115        	ld	_slave_address,a
- 120                     ; 130 	slave_address = 0b1100000;
- 122  002b 35600115      	mov	_slave_address,#96
+ 119  0028 48            	sll	a
+ 120  0029 c70115        	ld	_slave_address,a
+ 121                     ; 129 	slave_address = slave_address << 1;
  123                     ; 131   I2C_DeInit(I2C1);
- 125  002f ae5210        	ldw	x,#21008
- 126  0032 cd0000        	call	_I2C_DeInit
+ 125  002c ae5210        	ldw	x,#21008
+ 126  002f cd0000        	call	_I2C_DeInit
  128                     ; 134   I2C_Init(I2C1, 100000, slave_address,
  128                     ; 135            I2C_Mode_I2C, I2C_DutyCycle_2,
  128                     ; 136            I2C_Ack_Enable, I2C_AcknowledgedAddress_7bit);
- 130  0035 4b00          	push	#0
- 131  0037 4b04          	push	#4
- 132  0039 4b00          	push	#0
- 133  003b 4b00          	push	#0
- 134  003d c60115        	ld	a,_slave_address
- 135  0040 5f            	clrw	x
- 136  0041 97            	ld	xl,a
- 137  0042 89            	pushw	x
- 138  0043 ae86a0        	ldw	x,#34464
- 139  0046 89            	pushw	x
- 140  0047 ae0001        	ldw	x,#1
- 141  004a 89            	pushw	x
- 142  004b ae5210        	ldw	x,#21008
- 143  004e cd0000        	call	_I2C_Init
- 145  0051 5b0a          	addw	sp,#10
+ 130  0032 4b00          	push	#0
+ 131  0034 4b04          	push	#4
+ 132  0036 4b00          	push	#0
+ 133  0038 4b00          	push	#0
+ 134  003a c60115        	ld	a,_slave_address
+ 135  003d 5f            	clrw	x
+ 136  003e 97            	ld	xl,a
+ 137  003f 89            	pushw	x
+ 138  0040 ae86a0        	ldw	x,#34464
+ 139  0043 89            	pushw	x
+ 140  0044 ae0001        	ldw	x,#1
+ 141  0047 89            	pushw	x
+ 142  0048 ae5210        	ldw	x,#21008
+ 143  004b cd0000        	call	_I2C_Init
+ 145  004e 5b0a          	addw	sp,#10
  146                     ; 140   I2C_ITConfig(I2C1, (I2C_IT_TypeDef)(I2C_IT_ERR | I2C_IT_EVT | I2C_IT_BUF), ENABLE);
- 148  0053 4b01          	push	#1
- 149  0055 ae0007        	ldw	x,#7
- 150  0058 89            	pushw	x
- 151  0059 ae5210        	ldw	x,#21008
- 152  005c cd0000        	call	_I2C_ITConfig
- 154  005f 5b03          	addw	sp,#3
+ 148  0050 4b01          	push	#1
+ 149  0052 ae0007        	ldw	x,#7
+ 150  0055 89            	pushw	x
+ 151  0056 ae5210        	ldw	x,#21008
+ 152  0059 cd0000        	call	_I2C_ITConfig
+ 154  005c 5b03          	addw	sp,#3
  155                     ; 143   enableInterrupts();
- 158  0061 9a            	rim	
- 160  0062               L14:
+ 158  005e 9a            	rim	
+ 160  005f               L14:
  161                     ; 154 			if(CommunicationEnd = 0x01) //upload data from i2c buffer and update pwm 
- 163  0062 35010000      	mov	_CommunicationEnd,#1
- 164  0066 725d0000      	tnz	_CommunicationEnd
- 165  006a 27f6          	jreq	L14
+ 163  005f 35010000      	mov	_CommunicationEnd,#1
+ 164  0063 725d0000      	tnz	_CommunicationEnd
+ 165  0067 27f6          	jreq	L14
  166                     ; 156 				I2C_Data_To_Registers();
- 168  006c cd0000        	call	L31_I2C_Data_To_Registers
+ 168  0069 cd0000        	call	L31_I2C_Data_To_Registers
  170                     ; 158 				Update_Control ();
- 172  006f cd0000        	call	L51_Update_Control
- 174  0072 20ee          	jra	L14
+ 172  006c cd0000        	call	L51_Update_Control
+ 174  006f 20ee          	jra	L14
  199                     ; 168 static void CLK_Config(void)
  199                     ; 169 {
  200                     .text:	section	.text,new

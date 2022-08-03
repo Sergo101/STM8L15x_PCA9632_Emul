@@ -126,8 +126,8 @@ void main(void)
 	
 	/* Read config pin state and set i2c address*/
 	slave_address = 0b1100000 & (GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_4)<<1) & GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_5);
-	
-	slave_address = 0b1100000;
+	slave_address = slave_address << 1;
+	//slave_address = 0b1100000;
   I2C_DeInit(I2C1);
   /* Initialize I2C peripheral */
 
