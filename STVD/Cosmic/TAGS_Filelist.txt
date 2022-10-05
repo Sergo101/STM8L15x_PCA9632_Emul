@@ -63,3 +63,4 @@ stm8_interrupt_vector.c
 ..\..\stm8l15x_conf.h
 ..\..\stm8l15x_it.h
 c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\modsl0.h
+c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h

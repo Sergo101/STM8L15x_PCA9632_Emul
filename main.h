@@ -40,6 +40,8 @@
 #define SLAVE_ADDRESS 0x330
 #endif
 
+#ifndef _PCA9632
+#define _PCA9632
 /*Define PCA9632 control registers*/
 #define AUTO_INCREMENT_OFF							0
 
@@ -50,7 +52,7 @@
 
 #define AUTO_INCREMENT_OFFSET						5
 
-#define REGISTER_MASK										0b1111
+#define REGISTER_MASK										0b00001111
 
 /*It also means offset 'config_reg' array*/
 #define MODE1				0x00		//Mode register 1
@@ -71,6 +73,8 @@
 #define Set_LED1 TIM1_SetCompare3
 #define Set_LED2 TIM1_SetCompare1
 #define Set_LED3 TIM1_SetCompare2
+
+#endif
 
 #endif /* __MAIN_H*/
 

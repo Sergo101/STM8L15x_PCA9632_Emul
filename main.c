@@ -54,6 +54,7 @@
 #include "stm8l15x.h"
 //#include "stm8_eval.h"
 #include "main.h"
+#include "stdio.h"
 
 /** @addtogroup STM8L15x_StdPeriph_Examples
   * @{
@@ -72,12 +73,15 @@
 #define TIM1_PERIOD             10200
 #define TIM1_PRESCALER              0
 #define TIM1_REPTETION_COUNTER      0
+
+#define PUTCHAR_PROTOTYPE char putchar (char c)
+#define GETCHAR_PROTOTYPE char getchar (void)
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 
 uint8_t slave_address;
 
-uint8_t Config_reg [13];
+__IO uint8_t Config_reg [13];
 
 __IO uint8_t Slave_Buffer_Rx[255];
 
@@ -85,7 +89,8 @@ __IO uint8_t Rx_size;
 
 __IO uint8_t CommunicationEnd = 0x00;
 
-uint16_t bright, a;
+uint16_t bright;
+extern uint32_t a;
 
 uint8_t en_blink_led0;
 uint8_t en_blink_led1;
@@ -125,9 +130,16 @@ void main(void)
   TIM3_Config();
 	
 	/* Read config pin state and set i2c address*/
-	slave_address = 0b1100000 & (GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_4)<<1) & GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_5);
-	slave_address = slave_address << 1;
-	//slave_address = 0b1100000;
+	slave_address = 0;
+	if (GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_4)) {
+		slave_address = slave_address | 0b10;
+	}
+	if (GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_5)) {
+		slave_address = slave_address | 0b01;
+	}
+	slave_address = (slave_address | 0b1100000) <<1;
+	//slave_address = 0b1100010 << 1;
+	//slave_address = 0b1001001<<1;
   I2C_DeInit(I2C1);
   /* Initialize I2C peripheral */
 
@@ -138,27 +150,83 @@ void main(void)
 
   /* Enable Error Interrupt*/
   I2C_ITConfig(I2C1, (I2C_IT_TypeDef)(I2C_IT_ERR | I2C_IT_EVT | I2C_IT_BUF), ENABLE);
+	
+	/* EVAL COM (USARTx) configuration -----------------------------------------*/
+  /* USART configured as follow:
+        - BaudRate = 115200 baud  
+        - Word Length = 8 Bits
+        - One Stop Bit
+        - No parity
+        - Receive and transmit enabled
+        - USART Clock disabled
+  */
+	USART_DeInit(USART1);
+  USART_Init(USART1, (uint32_t)115200, USART_WordLength_8b, USART_StopBits_1,
+                   USART_Parity_No, USART_Mode_Rx | USART_Mode_Tx );
+	
+	/* Enable the USART Receive interrupt: this interrupt is generated when the USART
+    receive data register is not empty */
+  USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+	
+	USART_Cmd (USART1, ENABLE);
 
   /* Enable general interrupts */
   enableInterrupts();
   /*Main Loop */
-
+	
+	Set_LED1 (5000);
+	a = 100000;
+			while (a) a--;
+	Set_LED1 (0);
+	
+Config_reg[MODE1] = 0b10010001;
+	
+	printf("\n\rPCA9632 V 1.0\n\r");
+  printf("\n\rInertGas Medical\n\r");
+	
   while (1)
   {	
-		/*if (bright == 0) bright = 10200;
-		bright--;
-		TIM1_SetCompare3(bright);
-		a = 1000;
-			while (a) a--;
-		*/	
-			if(CommunicationEnd = 0x01) //upload data from i2c buffer and update pwm 
+			if(CommunicationEnd == 0x01) //upload data from i2c buffer and update pwm 
 			{
-				I2C_Data_To_Registers();
+				//I2C_Data_To_Registers();
 			
 				Update_Control ();
+				CommunicationEnd = 0;
 			}
   }
 }
+
+/**
+  * @brief Retargets the C library printf function to the USART.
+  * @param[in] c Character to send
+  * @retval char Character sent
+  * @par Required preconditions:
+  * - None
+  */
+PUTCHAR_PROTOTYPE
+{
+  /* Write a character to the USART */
+  USART_SendData8(USART1, c);
+  /* Loop until the end of transmission */
+  while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
+
+  return (c);
+}
+/**
+  * @brief Retargets the C library scanf function to the USART.
+  * @param[in] None
+  * @retval char Character to Read
+  * @par Required preconditions:
+  * - None
+  */
+GETCHAR_PROTOTYPE
+{
+  int c = 0;
+  /* Loop until the Read data register flag is SET */
+  while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET);
+    c = USART_ReceiveData8(USART1);
+    return (c);
+  }
 
 /**
   * @brief  Configure peripherals Clock   
@@ -178,6 +246,9 @@ static void CLK_Config(void)
 	
 	/* Enable TIM3 clock */
   CLK_PeripheralClockConfig(CLK_Peripheral_TIM3, ENABLE);
+	
+	/* Enable USART1 clock */
+  CLK_PeripheralClockConfig(CLK_Peripheral_USART1, ENABLE);
 }
 
 /**
@@ -187,10 +258,12 @@ static void CLK_Config(void)
   */
 static void GPIO_Config(void)
 {
+	SYSCFG->RMPCR1	|= 0b01 << 4;	//reconfig USART Pins from PC2,3 to PA2,3
+	
   /* GPIOD configuration: TIM1 channel 1 (PD2), channel 2 (PD4) and channel 3 (PD1), TIM3 channel 2(PD0) */
   GPIO_Init(GPIOD, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_4, GPIO_Mode_Out_PP_Low_Fast);
 	
-	/*GPIO configuration as input choosing pca9632 i2c address: PA4 - A0, PA5 - A1*/
+	/*GPIO configuration as input choosing pca9632 i2c address: PA4 - A1, PA5 - A0*/
 	GPIO_Init(GPIOA, GPIO_Pin_4 | GPIO_Pin_5, GPIO_Mode_In_PU_No_IT);
 }
 
@@ -266,8 +339,15 @@ static void I2C_Data_To_Registers (void){
 	uint8_t A; //auto increment
 	uint8_t D;	//control reg
 	uint8_t i;
+	
 	A = Slave_Buffer_Rx[0] & 0b11100000; //разбор битов управления и регистров по своим местам
-	D = Slave_Buffer_Rx[0] & REGISTER_MASK;
+	D = Slave_Buffer_Rx[0] & 0b00001111;
+	
+	printf ("Rx_size = %d\r", (int16_t)Rx_size);
+	printf ("D = %d\r", (int16_t)D);
+	for (i = 0; i < Rx_size; i++){
+					printf ("buff = %x\r", (int16_t)Slave_Buffer_Rx[i]);
+				}
 		/* Realization of AUTO-INCREMENT functions PCA9632*/
 		switch (A){
 			
@@ -278,6 +358,7 @@ static void I2C_Data_To_Registers (void){
 			case AUTO_INCREMENT_ALL:
 				for (i = 1; i <= Rx_size; i++){
 					Config_reg[D] = Slave_Buffer_Rx[i];
+					printf ("reg %d = %d\r", (int16_t)D, (int16_t)Slave_Buffer_Rx[i]);
 					D++;
 						if (D > ALLCALLADR) D = MODE1;
 				}
@@ -322,7 +403,7 @@ static void Update_Control (void){
 	uint16_t pwm3;
 	
 	
-	if ((Config_reg [MODE1] >> 4) & 1){ //check for SLEEP mode bit & OFF when SLEEP = 0
+	if ( !((Config_reg [MODE1] >> 4) & 1) ){ //check for SLEEP mode bit & OFF when SLEEP = 0
 	
 		/*OUTPUT LOGIC INVERT functional BEGIN*/
 		if ((Config_reg [MODE2] >> 4)&1) {

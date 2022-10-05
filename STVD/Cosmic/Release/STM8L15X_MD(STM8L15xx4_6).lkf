@@ -84,7 +84,7 @@ Release\stm8l15x_it.o
 
 # Library list - section reserved for STVD
 #<BEGIN LIBRARY_FILES>
-libis0.sm8
+libisl0.sm8
 libm0.sm8
 #<END LIBRARY_FILES>
 

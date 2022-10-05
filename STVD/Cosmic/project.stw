@@ -28,5 +28,5 @@ Filename=stm8l05xx8.stp
 Dependencies=
 [Options]
 ActiveProject=STM8L15X_MD(STM8L15xx4_6)
-ActiveConfig=Debug
+ActiveConfig=Release
 AddSortedElements=0

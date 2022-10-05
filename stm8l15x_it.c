@@ -29,7 +29,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm8l15x_it.h"
 #include "stm8_eval.h"
-
+#include "stdio.h"
 /** @addtogroup STM8L15x_StdPeriph_Examples
   * @{
   */
@@ -43,15 +43,62 @@
   */
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
+#ifndef _PCA9632
+#define _PCA9632
+/*Define PCA9632 control registers*/
+#define AUTO_INCREMENT_OFF							0
+
+#define AUTO_INCREMENT_ALL							0b10000000
+#define AUTO_INCREMENT_BRIGHTNESS				0b10100000
+#define AUTO_INCREMENT_GCONTROL					0b11000000
+#define AUTO_INCREMENT_I_GCONTROL				0b11100000
+
+#define AUTO_INCREMENT_OFFSET						5
+
+#define REGISTER_MASK										0b00001111
+
+/*It also means offset 'config_reg' array*/
+#define MODE1				0x00		//Mode register 1
+#define MODE2				0x01		//Mode register2
+#define PWM0				0x02		//brightness control LED0
+#define PWM1				0x03		//brightness control LED1
+#define PWM2				0x04		//brightness control LED2
+#define PWM3				0x05		//brightness control LED3
+#define GRPPWM			0x06		//group duty cycle control
+#define GRPFREQ			0x07		//group frequency
+#define LEDOUT			0x08		//LED output state
+#define SUBADR1			0x09		//i2c subaddress 1
+#define SUBADR2			0x0A		//i2c subaddress 2
+#define SUBADR3			0x0B		//i2c subaddress 3
+#define ALLCALLADR	0x0C		//LED all call i2c address
+
+#define Set_LED0 TIM3_SetCompare2
+#define Set_LED1 TIM1_SetCompare3
+#define Set_LED2 TIM1_SetCompare1
+#define Set_LED3 TIM1_SetCompare2
+
+#endif
+
 /* Private macro -------------------------------------------------------------*/
 
 /* Private variables ---------------------------------------------------------*/
 __IO uint8_t Rx_Idx = 0;
 
+uint32_t a;
+uint8_t inp, addr_ok = 0;
+
+uint8_t A; //auto increment
+uint8_t D;	//control reg
+
+uint8_t ai_start; //auto increment start value
+
+uint8_t ai_end; //auto increment end value
+
 extern __IO uint8_t Slave_Buffer_Rx[255];
 extern __IO uint8_t Rx_size;
 __IO uint16_t Event = 0x00;
 extern __IO uint8_t CommunicationEnd;
+extern __IO uint8_t Config_reg [13];
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 /* Public functions ----------------------------------------------------------*/
@@ -424,7 +471,6 @@ INTERRUPT_HANDLER(I2C1_SPI2_IRQHandler, 29)
   {
     /* Clears SR2 register */
     I2C1->SR2 = 0;
-
     /* Set LED5 */
     //STM_EVAL_LEDOn(LED5);
 
@@ -436,26 +482,72 @@ INTERRUPT_HANDLER(I2C1_SPI2_IRQHandler, 29)
       /* check on EV1*/
     case I2C_EVENT_SLAVE_RECEIVER_ADDRESS_MATCHED:
       Rx_Idx = 0;
+			addr_ok = 1;
       break;
 
       /* Check on EV2*/
     case I2C_EVENT_SLAVE_BYTE_RECEIVED:
-      Slave_Buffer_Rx[Rx_Idx++] = I2C_ReceiveData(I2C1);
+			if (addr_ok == 1) {
+				if (Rx_Idx == 0) {
+					 inp = I2C_ReceiveData(I2C1);
+						A = inp & 0b11100000; //разбор битов управления и регистров по своим местам
+						D = inp & 0b00001111;
+						USART_SendData8(USART1, D);
+						switch (A){
+			
+						case AUTO_INCREMENT_OFF: 
+						break;
+				
+						case AUTO_INCREMENT_ALL:
+						ai_start = MODE1;
+						ai_end = ALLCALLADR;
+						break;
+				
+						case AUTO_INCREMENT_BRIGHTNESS:
+						ai_start = PWM0;
+						ai_end = PWM3;
+						break;
+				
+						case AUTO_INCREMENT_GCONTROL:
+						ai_start = GRPPWM;
+						ai_end = GRPFREQ;
+						break;
+				
+						case AUTO_INCREMENT_I_GCONTROL:
+						ai_start = PWM0;
+						ai_end = GRPFREQ;
+						break;
+						}
+					}
+				else {
+							Config_reg [D] = I2C_ReceiveData(I2C1);
+							USART_SendData8(USART1, Config_reg [D]);
+							D ++;
+							if (D > ai_end) D = ai_start;
+					}
+				}
+				Rx_Idx++;
       break;
 
       /* Check on EV4 */
     case (I2C_EVENT_SLAVE_STOP_DETECTED):
 			/* write to CR2 to clear STOPF flag */
 			I2C1->CR2 |= I2C_CR2_ACK;
-			Rx_size = Rx_Idx-1;
+			
+			if (addr_ok == 1) {
+			Rx_size = Rx_Idx;
 			Rx_Idx = 0;
 			CommunicationEnd = 0x01;
+			USART_SendData8(USART1, 0xFF);
+			}
+			addr_ok = 0;
       break;
 
     default:
       break;
   }
 }
+
 
 /**
   * @}
