@@ -53,6 +53,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm8l15x.h"
 //#include "stm8_eval.h"
+#include "stm8l15x_wwdg.h"
+#include "stm8l15x_usart.h"
 #include "main.h"
 #include "stdio.h"
 
@@ -74,8 +76,10 @@
 #define TIM1_PRESCALER              0
 #define TIM1_REPTETION_COUNTER      0
 
+#ifndef PUTCHAR_PROTOTYPE
 #define PUTCHAR_PROTOTYPE char putchar (char c)
 #define GETCHAR_PROTOTYPE char getchar (void)
+#endif
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 
@@ -89,6 +93,8 @@ __IO uint8_t Rx_size;
 
 __IO uint8_t CommunicationEnd = 0x00;
 
+__IO uint8_t i2c_buff [16];
+
 uint16_t bright;
 extern uint32_t a;
 
@@ -96,6 +102,8 @@ uint8_t en_blink_led0;
 uint8_t en_blink_led1;
 uint8_t en_blink_led2;
 uint8_t en_blink_led3;
+
+uint32_t baudrate = 14400UL;
 
 /* Private function prototypes -----------------------------------------------*/
 static void CLK_Config(void);
@@ -138,12 +146,12 @@ void main(void)
 		slave_address = slave_address | 0b01;
 	}
 	slave_address = (slave_address | 0b1100000) <<1;
-	//slave_address = 0b1100010 << 1;
+	slave_address = 0b1100010 << 1;
 	//slave_address = 0b1001001<<1;
   I2C_DeInit(I2C1);
   /* Initialize I2C peripheral */
 
-  I2C_Init(I2C1, 100000, slave_address,
+  I2C_Init(I2C1, 400000, slave_address,
            I2C_Mode_I2C, I2C_DutyCycle_2,
            I2C_Ack_Enable, I2C_AcknowledgedAddress_7bit);
 
@@ -161,6 +169,8 @@ void main(void)
         - USART Clock disabled
   */
 	USART_DeInit(USART1);
+	a = 1000;
+			while (a) a--;
   USART_Init(USART1, (uint32_t)115200, USART_WordLength_8b, USART_StopBits_1,
                    USART_Parity_No, USART_Mode_Rx | USART_Mode_Tx );
 	
@@ -186,12 +196,22 @@ Config_reg[MODE1] = 0b10010001;
 	
   while (1)
   {	
+
 			if(CommunicationEnd == 0x01) //upload data from i2c buffer and update pwm 
 			{
 				//I2C_Data_To_Registers();
 			
 				Update_Control ();
 				CommunicationEnd = 0;
+				
+				
+			}
+			
+			if (i2c_buff [0]) 
+			{
+				printf ("%X %X %X %X %X %X \n\r", i2c_buff [1],i2c_buff [2],(uint16_t)i2c_buff [3],(uint16_t)i2c_buff [4], 
+				(int16_t)i2c_buff [5],(int16_t)i2c_buff [6] );
+				i2c_buff [0] = 0;
 			}
   }
 }
@@ -260,11 +280,32 @@ static void GPIO_Config(void)
 {
 	SYSCFG->RMPCR1	|= 0b01 << 4;	//reconfig USART Pins from PC2,3 to PA2,3
 	
+	/*GPIO configuration as HiZ for USART: PA2, PA3 */
+	GPIO_Init(GPIOA, GPIO_Pin_2 , GPIO_Mode_Out_OD_HiZ_Fast);
+	
+	/* Configure USART Tx as alternate function push-pull  (software pull up)*/
+  GPIO_ExternalPullUpConfig(GPIOA, GPIO_Pin_2, ENABLE);
+
+  /* Configure USART Rx as alternate function push-pull  (software pull up)*/
+  GPIO_ExternalPullUpConfig(GPIOA, GPIO_Pin_3, ENABLE);
+	
   /* GPIOD configuration: TIM1 channel 1 (PD2), channel 2 (PD4) and channel 3 (PD1), TIM3 channel 2(PD0) */
   GPIO_Init(GPIOD, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_4, GPIO_Mode_Out_PP_Low_Fast);
 	
 	/*GPIO configuration as input choosing pca9632 i2c address: PA4 - A1, PA5 - A0*/
-	GPIO_Init(GPIOA, GPIO_Pin_4 | GPIO_Pin_5, GPIO_Mode_In_PU_No_IT);
+	GPIO_Init(GPIOA, GPIO_Pin_1 | GPIO_Pin_4 | GPIO_Pin_5, GPIO_Mode_In_PU_No_IT);
+	
+	/*GPIO configuration as input choosing pca9632 i2c address: PA4 - A1, PA5 - A0*/
+	GPIO_Init(GPIOC, GPIO_Pin_0 | GPIO_Pin_1, GPIO_Mode_In_PU_No_IT);
+	
+	/* Configure I2C as alternate function push-pull  (software pull up)*/
+  GPIO_ExternalPullUpConfig(GPIOC, GPIO_Pin_0, ENABLE);
+
+  /* Configure I2C as alternate function push-pull  (software pull up)*/
+  GPIO_ExternalPullUpConfig(GPIOC, GPIO_Pin_1, ENABLE);
+	
+	/*Reset pin pull-up GPIO configuration*/
+	GPIO_Init(GPIOA, GPIO_Pin_1, GPIO_Mode_In_PU_No_IT);
 }
 
 /**
@@ -407,16 +448,16 @@ static void Update_Control (void){
 	
 		/*OUTPUT LOGIC INVERT functional BEGIN*/
 		if ((Config_reg [MODE2] >> 4)&1) {
-			pwm0 = (255 - Config_reg[PWM0]) *40;
-			pwm1 = (255 - Config_reg[PWM1]) *40;
-			pwm2 = (255 - Config_reg[PWM2]) *40;
-			pwm3 = (255 - Config_reg[PWM3]) *40;
-		}
-		else {
 			pwm0 = Config_reg[PWM0] *40;
 			pwm1 = Config_reg[PWM1] *40;
 			pwm2 = Config_reg[PWM2] *40;
 			pwm3 = Config_reg[PWM3] *40;
+		}
+		else {
+			pwm0 = (255 - Config_reg[PWM0]) *40;
+			pwm1 = (255 - Config_reg[PWM1]) *40;
+			pwm2 = (255 - Config_reg[PWM2]) *40;
+			pwm3 = (255 - Config_reg[PWM3]) *40;
 		}
 		/*OUTPUT LOGIC INVERT functional END*/
 		

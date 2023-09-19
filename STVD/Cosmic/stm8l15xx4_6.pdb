@@ -34,6 +34,6 @@ ShowRegisterAddress=1
 [DebugState_v1-Debug.AddOn.St7McuIcdConf]
 McuName=STM8L152C6
 [DebugState_v1-Debug.AddOn.IcdBreak]
-ICDBreak0=CR:0x00000000,BK1:0x00000000,BK2:0x00000000
+ICDBreak0=CR:0x00000000,BK1:0x00ffffff,BK2:0x00ffffff
 [DebugState_v1-Debug.AddOn.SteppingMode]
 Mode=hardware

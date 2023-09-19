@@ -4,7 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-A	..\..\stm8l15x_it.c	90;"	variable
+A	..\..\stm8l15x_it.c	91;"	variable
 ADC1	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2891;"	macro
 ADC1_BASE	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2831;"	macro
 ADC1_COMP_IRQHandler	..\..\stm8l15x_it.h	63;"	prototype	signature:(void)
@@ -256,7 +256,7 @@ AES_WriteSubData	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_ae
 AES_WriteSubKey	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_aes.h	134;"	prototype	signature:(uint8_t Key)
 AES_struct	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2748;"	struct
 ALLCALLADR	..\..\main.h	70;"	macro
-ALLCALLADR	..\..\stm8l15x_it.c	73;"	macro	file:
+ALLCALLADR	..\..\stm8l15x_it.c	74;"	macro	file:
 ALRAWF_TIMEOUT	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_rtc.c	161;"	macro	file:
 ALRMAR1	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	347;"	member	struct:RTC_struct
 ALRMAR2	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	348;"	member	struct:RTC_struct
@@ -275,17 +275,17 @@ ARRL	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1975;"	membe
 ASCR1	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1478;"	member	struct:RI_struct
 ASCR2	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1479;"	member	struct:RI_struct
 AUTO_INCREMENT_ALL	..\..\main.h	48;"	macro
-AUTO_INCREMENT_ALL	..\..\stm8l15x_it.c	51;"	macro	file:
+AUTO_INCREMENT_ALL	..\..\stm8l15x_it.c	52;"	macro	file:
 AUTO_INCREMENT_BRIGHTNESS	..\..\main.h	49;"	macro
-AUTO_INCREMENT_BRIGHTNESS	..\..\stm8l15x_it.c	52;"	macro	file:
+AUTO_INCREMENT_BRIGHTNESS	..\..\stm8l15x_it.c	53;"	macro	file:
 AUTO_INCREMENT_GCONTROL	..\..\main.h	50;"	macro
-AUTO_INCREMENT_GCONTROL	..\..\stm8l15x_it.c	53;"	macro	file:
+AUTO_INCREMENT_GCONTROL	..\..\stm8l15x_it.c	54;"	macro	file:
 AUTO_INCREMENT_I_GCONTROL	..\..\main.h	51;"	macro
-AUTO_INCREMENT_I_GCONTROL	..\..\stm8l15x_it.c	54;"	macro	file:
+AUTO_INCREMENT_I_GCONTROL	..\..\stm8l15x_it.c	55;"	macro	file:
 AUTO_INCREMENT_OFF	..\..\main.h	46;"	macro
-AUTO_INCREMENT_OFF	..\..\stm8l15x_it.c	49;"	macro	file:
+AUTO_INCREMENT_OFF	..\..\stm8l15x_it.c	50;"	macro	file:
 AUTO_INCREMENT_OFFSET	..\..\main.h	53;"	macro
-AUTO_INCREMENT_OFFSET	..\..\stm8l15x_it.c	56;"	macro	file:
+AUTO_INCREMENT_OFFSET	..\..\stm8l15x_it.c	57;"	macro	file:
 AffBit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2984;"	macro
 BEEP	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2866;"	macro
 BEEP_BASE	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2816;"	macro
@@ -454,8 +454,8 @@ CLK_ClockSecuritySystemEnable	..\..\..\..\libraries\stm8l15x_stdperiph_driver\in
 CLK_ClockSecuritySystemEnable	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_clk.c	306;"	function	signature:(void)
 CLK_ClockSecuritySytemDeglitchCmd	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_clk.h	403;"	prototype	signature:(FunctionalState NewState)
 CLK_ClockSecuritySytemDeglitchCmd	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_clk.c	317;"	function	signature:(FunctionalState NewState)
-CLK_Config	..\..\main.c	101;"	prototype	file:	signature:(void)
-CLK_Config	..\..\main.c	236;"	function	file:	signature:(void)
+CLK_Config	..\..\main.c	109;"	prototype	file:	signature:(void)
+CLK_Config	..\..\main.c	256;"	function	file:	signature:(void)
 CLK_DeInit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_clk.h	394;"	prototype	signature:(void)
 CLK_DeInit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_clk.c	120;"	function	signature:(void)
 CLK_ECKCR_HSEBYP	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	823;"	macro
@@ -826,9 +826,9 @@ CSSLSE_struct	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	569
 CSSR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	743;"	member	struct:CLK_struct
 ChgBit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2983;"	macro
 ClrBit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2981;"	macro
-CommunicationEnd	..\..\main.c	90;"	variable
-Config_reg	..\..\main.c	84;"	variable
-D	..\..\stm8l15x_it.c	91;"	variable
+CommunicationEnd	..\..\main.c	94;"	variable
+Config_reg	..\..\main.c	88;"	variable
+D	..\..\stm8l15x_it.c	92;"	variable
 DAC	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2881;"	macro
 DAC_Align_12b_L	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_dac.h	77;"	enumerator	enum:__anon43
 DAC_Align_12b_R	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_dac.h	76;"	enumerator	enum:__anon43
@@ -1267,7 +1267,7 @@ EXTI_Trigger_TypeDef	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15
 EXTI_TypeDef	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	949;"	typedef	typeref:struct:EXTI_struct
 EXTI_struct	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	937;"	struct
 ErrorStatus	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	249;"	typedef	typeref:enum:__anon4
-Event	..\..\stm8l15x_it.c	99;"	variable
+Event	..\..\stm8l15x_it.c	100;"	variable
 FALSE	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	242;"	enumerator	enum:__anon1
 FAR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	131;"	macro
 FAR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	137;"	macro
@@ -1395,7 +1395,7 @@ FlagStatus	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	244;"	
 FunctionalState	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	246;"	typedef	typeref:enum:__anon3
 GCR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	644;"	member	struct:CFG_struct
 GCSR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2539;"	member	struct:DMA_struct
-GETCHAR_PROTOTYPE	..\..\main.c	78;"	macro	file:
+GETCHAR_PROTOTYPE	..\..\main.c	81;"	macro	file:
 GIR1	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2540;"	member	struct:DMA_struct
 GPIOA	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2847;"	macro
 GPIOA_BASE	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2793;"	macro
@@ -1417,8 +1417,8 @@ GPIOI	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2855;"	macr
 GPIOI_BASE	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2801;"	macro
 GPIO_CR1_RESET_VALUE	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	292;"	macro
 GPIO_CR2_RESET_VALUE	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	293;"	macro
-GPIO_Config	..\..\main.c	102;"	prototype	file:	signature:(void)
-GPIO_Config	..\..\main.c	259;"	function	file:	signature:(void)
+GPIO_Config	..\..\main.c	110;"	prototype	file:	signature:(void)
+GPIO_Config	..\..\main.c	279;"	function	file:	signature:(void)
 GPIO_DDR_RESET_VALUE	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	291;"	macro
 GPIO_DeInit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_gpio.h	154;"	prototype	signature:(GPIO_TypeDef* GPIOx)
 GPIO_DeInit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_gpio.c	96;"	function	signature:(GPIO_TypeDef* GPIOx)
@@ -1473,9 +1473,9 @@ GPIO_WriteBit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_gpio.
 GPIO_WriteBit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_gpio.c	270;"	function	signature:(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef GPIO_Pin, BitAction GPIO_BitVal)
 GPIO_struct	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	277;"	struct
 GRPFREQ	..\..\main.h	65;"	macro
-GRPFREQ	..\..\stm8l15x_it.c	68;"	macro	file:
+GRPFREQ	..\..\stm8l15x_it.c	69;"	macro	file:
 GRPPWM	..\..\main.h	64;"	macro
-GRPPWM	..\..\stm8l15x_it.c	67;"	macro	file:
+GRPPWM	..\..\stm8l15x_it.c	68;"	macro	file:
 GTR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2232;"	member	struct:USART_struct
 HSE_VALUE	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	110;"	macro
 HSICALR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	745;"	member	struct:CLK_struct
@@ -1541,8 +1541,8 @@ I2C_DMALastTransferCmd	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l
 I2C_DMALastTransferCmd	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_i2c.c	827;"	function	signature:(I2C_TypeDef* I2Cx, FunctionalState NewState)
 I2C_DR_DR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1154;"	macro
 I2C_DR_RESET_VALUE	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1108;"	macro
-I2C_Data_To_Registers	..\..\main.c	106;"	prototype	file:	signature:(void)
-I2C_Data_To_Registers	..\..\main.c	338;"	function	file:	signature:(void)
+I2C_Data_To_Registers	..\..\main.c	114;"	prototype	file:	signature:(void)
+I2C_Data_To_Registers	..\..\main.c	379;"	function	file:	signature:(void)
 I2C_DeInit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_i2c.h	655;"	prototype	signature:(I2C_TypeDef* I2Cx)
 I2C_DeInit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_i2c.c	141;"	function	signature:(I2C_TypeDef* I2Cx)
 I2C_Direction_Receiver	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_i2c.h	122;"	enumerator	enum:__anon78
@@ -1748,7 +1748,7 @@ INTERRUPT_HANDLER	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h
 INTERRUPT_HANDLER_TRAP	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2940;"	macro
 INTERRUPT_HANDLER_TRAP	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2945;"	macro
 INTERRUPT_HANDLER_TRAP	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2954;"	macro
-INTERRUPT_HANDLER_TRAP	..\..\stm8l15x_it.c	125;"	function
+INTERRUPT_HANDLER_TRAP	..\..\stm8l15x_it.c	128;"	function
 IN_RAM	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	182;"	macro
 IN_RAM	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	184;"	macro
 IN_RAM	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	186;"	macro
@@ -2449,7 +2449,7 @@ LED5	..\..\..\..\utilities\stm8_eval\stm8_eval.h	81;"	enumerator	enum:__anon304
 LED5_GPIO_PIN	..\..\..\..\utilities\stm8_eval\stm8l1526_eval\stm8l1526_eval.h	72;"	macro
 LED5_GPIO_PORT	..\..\..\..\utilities\stm8_eval\stm8l1526_eval\stm8l1526_eval.h	71;"	macro
 LEDOUT	..\..\main.h	66;"	macro
-LEDOUT	..\..\stm8l15x_it.c	69;"	macro	file:
+LEDOUT	..\..\stm8l15x_it.c	70;"	macro	file:
 LEDn	..\..\..\..\utilities\stm8_eval\stm8l1526_eval\stm8l1526_eval.h	58;"	macro
 LEFT_BUTTON_EXTI	..\..\..\..\utilities\stm8_eval\stm8l1526_eval\stm8l1526_eval.h	125;"	macro
 LEFT_BUTTON_PIN	..\..\..\..\utilities\stm8_eval\stm8l1526_eval\stm8l1526_eval.h	99;"	macro
@@ -2474,9 +2474,9 @@ Led_TypeDef	..\..\..\..\utilities\stm8_eval\stm8_eval.h	82;"	typedef	typeref:enu
 MEMCPY	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	145;"	macro
 MEMCPY	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	148;"	macro
 MODE1	..\..\main.h	58;"	macro
-MODE1	..\..\stm8l15x_it.c	61;"	macro	file:
+MODE1	..\..\stm8l15x_it.c	62;"	macro	file:
 MODE2	..\..\main.h	59;"	macro
-MODE2	..\..\stm8l15x_it.c	62;"	macro	file:
+MODE2	..\..\stm8l15x_it.c	63;"	macro	file:
 MemoryAddressCast	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	167;"	macro
 MemoryAddressCast	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	171;"	macro
 MskBit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2987;"	macro
@@ -2512,15 +2512,15 @@ PSCR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2233;"	membe
 PSCRH	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1740;"	member	struct:TIM1_struct
 PSCRL	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1741;"	member	struct:TIM1_struct
 PUKR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1025;"	member	struct:FLASH_struct
-PUTCHAR_PROTOTYPE	..\..\main.c	77;"	macro	file:
+PUTCHAR_PROTOTYPE	..\..\main.c	80;"	macro	file:
 PWM0	..\..\main.h	60;"	macro
-PWM0	..\..\stm8l15x_it.c	63;"	macro	file:
+PWM0	..\..\stm8l15x_it.c	64;"	macro	file:
 PWM1	..\..\main.h	61;"	macro
-PWM1	..\..\stm8l15x_it.c	64;"	macro	file:
+PWM1	..\..\stm8l15x_it.c	65;"	macro	file:
 PWM2	..\..\main.h	62;"	macro
-PWM2	..\..\stm8l15x_it.c	65;"	macro	file:
+PWM2	..\..\stm8l15x_it.c	66;"	macro	file:
 PWM3	..\..\main.h	63;"	macro
-PWM3	..\..\stm8l15x_it.c	66;"	macro	file:
+PWM3	..\..\stm8l15x_it.c	67;"	macro	file:
 PWR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2860;"	macro
 PWR_BASE	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2812;"	macro
 PWR_CR2_VREFINTF	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1454;"	macro
@@ -2576,7 +2576,7 @@ RCR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1744;"	member
 RECALPF_TIMEOUT	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_rtc.c	162;"	macro	file:
 REGCSR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	748;"	member	struct:CLK_struct
 REGISTER_MASK	..\..\main.h	55;"	macro
-REGISTER_MASK	..\..\stm8l15x_it.c	58;"	macro	file:
+REGISTER_MASK	..\..\stm8l15x_it.c	59;"	macro	file:
 REGISTER_Mask	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_i2c.c	100;"	macro	file:
 REGISTER_SR1_Index	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_i2c.c	101;"	macro	file:
 REGISTER_SR2_Index	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_i2c.c	102;"	macro	file:
@@ -3229,8 +3229,8 @@ RTC_WriteProtectionCmd	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l
 RTC_Year	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_rtc.h	537;"	member	struct:__anon132
 RTC_struct	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	302;"	struct
 RXCRCR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1657;"	member	struct:SPI_struct
-Rx_Idx	..\..\stm8l15x_it.c	85;"	variable
-Rx_size	..\..\main.c	88;"	variable
+Rx_Idx	..\..\stm8l15x_it.c	86;"	variable
+Rx_size	..\..\main.c	92;"	variable
 S16_MAX	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	255;"	macro
 S16_MIN	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	256;"	macro
 S32_MAX	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	258;"	macro
@@ -3426,11 +3426,11 @@ STM_EVAL_PBGetState	..\..\..\..\utilities\stm8_eval\stm8l1526_eval\stm8l1526_eva
 STM_EVAL_PBInit	..\..\..\..\utilities\stm8_eval\stm8l1526_eval\stm8l1526_eval.h	254;"	prototype	signature:(Button_TypeDef Button, ButtonMode_TypeDef Button_Mode)
 STRINGVECTOR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2949;"	macro
 SUBADR1	..\..\main.h	67;"	macro
-SUBADR1	..\..\stm8l15x_it.c	70;"	macro	file:
+SUBADR1	..\..\stm8l15x_it.c	71;"	macro	file:
 SUBADR2	..\..\main.h	68;"	macro
-SUBADR2	..\..\stm8l15x_it.c	71;"	macro	file:
+SUBADR2	..\..\stm8l15x_it.c	72;"	macro	file:
 SUBADR3	..\..\main.h	69;"	macro
-SUBADR3	..\..\stm8l15x_it.c	72;"	macro	file:
+SUBADR3	..\..\stm8l15x_it.c	73;"	macro	file:
 SUCCESS	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	249;"	enumerator	enum:__anon4
 SWCR	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	742;"	member	struct:CLK_struct
 SWITCH_CSS_BREAK_DAC_IRQHandler	..\..\stm8l15x_it.h	62;"	prototype	signature:(void)
@@ -3482,14 +3482,14 @@ SYSCFG_struct	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	674
 SYSDivFactor	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_clk.c	74;"	variable
 SetBit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2980;"	macro
 Set_LED0	..\..\main.h	72;"	macro
-Set_LED0	..\..\stm8l15x_it.c	75;"	macro	file:
+Set_LED0	..\..\stm8l15x_it.c	76;"	macro	file:
 Set_LED1	..\..\main.h	73;"	macro
-Set_LED1	..\..\stm8l15x_it.c	76;"	macro	file:
+Set_LED1	..\..\stm8l15x_it.c	77;"	macro	file:
 Set_LED2	..\..\main.h	74;"	macro
-Set_LED2	..\..\stm8l15x_it.c	77;"	macro	file:
+Set_LED2	..\..\stm8l15x_it.c	78;"	macro	file:
 Set_LED3	..\..\main.h	75;"	macro
-Set_LED3	..\..\stm8l15x_it.c	78;"	macro	file:
-Slave_Buffer_Rx	..\..\main.c	86;"	variable
+Set_LED3	..\..\stm8l15x_it.c	79;"	macro	file:
+Slave_Buffer_Rx	..\..\main.c	90;"	variable
 TCR1	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	363;"	member	struct:RTC_struct
 TCR2	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	364;"	member	struct:RTC_struct
 TEN_VALUE_BCD	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_rtc.c	165;"	macro	file:
@@ -3629,8 +3629,8 @@ TIM1_ClearOC4Ref	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_ti
 TIM1_ClearOC4Ref	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_tim1.c	1256;"	function	signature:(FunctionalState NewState)
 TIM1_Cmd	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_tim1.h	910;"	prototype	signature:(FunctionalState NewState)
 TIM1_Cmd	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_tim1.c	472;"	function	signature:(FunctionalState NewState)
-TIM1_Config	..\..\main.c	103;"	prototype	file:	signature:(void)
-TIM1_Config	..\..\main.c	275;"	function	file:	signature:(void)
+TIM1_Config	..\..\main.c	111;"	prototype	file:	signature:(void)
+TIM1_Config	..\..\main.c	316;"	function	file:	signature:(void)
 TIM1_CounterModeConfig	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_tim1.h	901;"	prototype	signature:(TIM1_CounterMode_TypeDef TIM1_CounterMode)
 TIM1_CounterModeConfig	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_tim1.c	303;"	function	signature:(TIM1_CounterMode_TypeDef TIM1_CounterMode)
 TIM1_CounterMode_CenterAligned1	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_tim1.h	101;"	enumerator	enum:__anon156
@@ -3932,8 +3932,8 @@ TIM1_OutputNState_TypeDef	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\st
 TIM1_OutputState_Disable	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_tim1.h	141;"	enumerator	enum:__anon159
 TIM1_OutputState_Enable	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_tim1.h	142;"	enumerator	enum:__anon159
 TIM1_OutputState_TypeDef	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_tim1.h	143;"	typedef	typeref:enum:__anon159
-TIM1_PERIOD	..\..\main.c	73;"	macro	file:
-TIM1_PRESCALER	..\..\main.c	74;"	macro	file:
+TIM1_PERIOD	..\..\main.c	75;"	macro	file:
+TIM1_PRESCALER	..\..\main.c	76;"	macro	file:
 TIM1_PSCH_PSC	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1902;"	macro
 TIM1_PSCL_PSC	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1903;"	macro
 TIM1_PSCRH_RESET_VALUE	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1782;"	macro
@@ -3947,7 +3947,7 @@ TIM1_PrescalerConfig	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15
 TIM1_PrescalerConfig	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_tim1.c	279;"	function	signature:(uint16_t Prescaler, TIM1_PSCReloadMode_TypeDef TIM1_PSCReloadMode)
 TIM1_RCR_REP	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1908;"	macro
 TIM1_RCR_RESET_VALUE	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1786;"	macro
-TIM1_REPTETION_COUNTER	..\..\main.c	75;"	macro	file:
+TIM1_REPTETION_COUNTER	..\..\main.c	77;"	macro	file:
 TIM1_SMCR_MSM	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1824;"	macro
 TIM1_SMCR_OCCS	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1826;"	macro
 TIM1_SMCR_RESET_VALUE	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1767;"	macro
@@ -4327,8 +4327,8 @@ TIM3_ClearITPendingBit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l
 TIM3_ClearITPendingBit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_tim3.c	1561;"	function	signature:(TIM3_IT_TypeDef TIM3_IT)
 TIM3_Cmd	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_tim3.h	813;"	prototype	signature:(FunctionalState NewState)
 TIM3_Cmd	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_tim3.c	488;"	function	signature:(FunctionalState NewState)
-TIM3_Config	..\..\main.c	104;"	prototype	file:	signature:(void)
-TIM3_Config	..\..\main.c	313;"	function	file:	signature:(void)
+TIM3_Config	..\..\main.c	112;"	prototype	file:	signature:(void)
+TIM3_Config	..\..\main.c	354;"	function	file:	signature:(void)
 TIM3_CounterModeConfig	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_tim3.h	804;"	prototype	signature:(TIM3_CounterMode_TypeDef TIM3_CounterMode)
 TIM3_CounterModeConfig	..\..\..\..\libraries\stm8l15x_stdperiph_driver\src\stm8l15x_tim3.c	306;"	function	signature:(TIM3_CounterMode_TypeDef TIM3_CounterMode)
 TIM3_CounterMode_CenterAligned1	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_tim3.h	134;"	enumerator	enum:__anon223
@@ -5211,8 +5211,8 @@ USART_WordLength_9b	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x
 USART_WordLength_TypeDef	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_usart.h	199;"	typedef	typeref:enum:__anon295
 USART_struct	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2221;"	struct
 USE_STDPERIPH_DRIVER	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	99;"	macro
-Update_Control	..\..\main.c	107;"	prototype	file:	signature:(void)
-Update_Control	..\..\main.c	394;"	function	file:	signature:(void)
+Update_Control	..\..\main.c	115;"	prototype	file:	signature:(void)
+Update_Control	..\..\main.c	435;"	function	file:	signature:(void)
 VECTOR_ID	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2950;"	macro
 ValBit	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2989;"	macro
 WDG	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1366;"	member	struct:OPT_struct
@@ -5322,7 +5322,7 @@ XTSTARTUP	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	1367;"	
 _COSMIC_	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	86;"	macro
 _IAR_	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	90;"	macro
 _PCA9632	..\..\main.h	44;"	macro
-_PCA9632	..\..\stm8l15x_it.c	47;"	macro	file:
+_PCA9632	..\..\stm8l15x_it.c	48;"	macro	file:
 _RAISONANCE_	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	88;"	macro
 __CONST	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	161;"	macro
 __I	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	217;"	macro
@@ -5372,23 +5372,25 @@ __STM8L15x_WWDG_H	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x_w
 __STM8_EVAL_H	..\..\..\..\utilities\stm8_eval\stm8_eval.h	27;"	macro
 _stext	..\..\stm8l15x_it.h	40;"	prototype	signature:(void)
 _vectab	stm8_interrupt_vector.c	15;"	variable
-a	..\..\stm8l15x_it.c	87;"	variable
-addr_ok	..\..\stm8l15x_it.c	88;"	variable
-ai_end	..\..\stm8l15x_it.c	95;"	variable
-ai_start	..\..\stm8l15x_it.c	93;"	variable
-assert_failed	..\..\main.c	518;"	function	signature:(uint8_t* file, uint32_t line)
+a	..\..\stm8l15x_it.c	88;"	variable
+addr_ok	..\..\stm8l15x_it.c	89;"	variable
+ai_end	..\..\stm8l15x_it.c	96;"	variable
+ai_start	..\..\stm8l15x_it.c	94;"	variable
+assert_failed	..\..\main.c	559;"	function	signature:(uint8_t* file, uint32_t line)
 assert_failed	..\..\stm8l15x_conf.h	84;"	prototype	signature:(uint8_t* file, uint32_t line)
 assert_param	..\..\stm8l15x_conf.h	82;"	macro
 assert_param	..\..\stm8l15x_conf.h	86;"	macro
+baudrate	..\..\main.c	106;"	variable
 bool	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	242;"	typedef	typeref:enum:__anon1
-bright	..\..\main.c	92;"	variable
+bright	..\..\main.c	98;"	variable
+count	..\..\stm8l15x_it.c	89;"	variable
 disableInterrupts	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2905;"	macro
 disableInterrupts	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2915;"	macro
 disableInterrupts	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2926;"	macro
-en_blink_led0	..\..\main.c	95;"	variable
-en_blink_led1	..\..\main.c	96;"	variable
-en_blink_led2	..\..\main.c	97;"	variable
-en_blink_led3	..\..\main.c	98;"	variable
+en_blink_led0	..\..\main.c	101;"	variable
+en_blink_led1	..\..\main.c	102;"	variable
+en_blink_led2	..\..\main.c	103;"	variable
+en_blink_led3	..\..\main.c	104;"	variable
 enableInterrupts	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2904;"	macro
 enableInterrupts	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2914;"	macro
 enableInterrupts	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2925;"	macro
@@ -5397,7 +5399,8 @@ gets	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	16;"	proto
 halt	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2912;"	macro
 halt	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2922;"	macro
 halt	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2933;"	macro
-inp	..\..\stm8l15x_it.c	88;"	variable
+i2c_buff	..\..\main.c	96;"	variable
+inp	..\..\stm8l15x_it.c	89;"	variable
 int16_t	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	223;"	typedef
 int32_t	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	224;"	typedef
 int8_t	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	222;"	typedef
@@ -5405,7 +5408,7 @@ interrupt_handler	stm8_interrupt_vector.c	12;"	member	struct:interrupt_vector	fi
 interrupt_handler_t	stm8_interrupt_vector.c	8;"	typedef	file:
 interrupt_instruction	stm8_interrupt_vector.c	11;"	member	struct:interrupt_vector	file:
 interrupt_vector	stm8_interrupt_vector.c	10;"	struct	file:
-main	..\..\main.c	116;"	function	signature:(void)
+main	..\..\main.c	124;"	function	signature:(void)
 nop	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2908;"	macro
 nop	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2918;"	macro
 nop	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2929;"	macro
@@ -5454,7 +5457,7 @@ sim	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2907;"	macro
 sim	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2917;"	macro
 sim	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2928;"	macro
 size_t	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	10;"	typedef
-slave_address	..\..\main.c	82;"	variable
+slave_address	..\..\main.c	86;"	variable
 sprintf	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	22;"	prototype	signature:(char *s, char *format, ...)
 sscanf	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	21;"	prototype	signature:(char *s, char *format, ...)
 trap	..\..\..\..\libraries\stm8l15x_stdperiph_driver\inc\stm8l15x.h	2909;"	macro

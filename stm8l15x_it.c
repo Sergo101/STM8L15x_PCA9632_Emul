@@ -30,6 +30,7 @@
 #include "stm8l15x_it.h"
 #include "stm8_eval.h"
 #include "stdio.h"
+#include "stm8l15x_usart.h"
 /** @addtogroup STM8L15x_StdPeriph_Examples
   * @{
   */
@@ -85,7 +86,7 @@
 __IO uint8_t Rx_Idx = 0;
 
 uint32_t a;
-uint8_t inp, addr_ok = 0;
+uint8_t inp,count, addr_ok = 0;
 
 uint8_t A; //auto increment
 uint8_t D;	//control reg
@@ -99,6 +100,8 @@ extern __IO uint8_t Rx_size;
 __IO uint16_t Event = 0x00;
 extern __IO uint8_t CommunicationEnd;
 extern __IO uint8_t Config_reg [13];
+
+extern __IO uint8_t i2c_buff [16];
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 /* Public functions ----------------------------------------------------------*/
@@ -439,7 +442,7 @@ INTERRUPT_HANDLER(SPI1_IRQHandler, 26)
   * @param  None
   * @retval None
   */
-INTERRUPT_HANDLER(USART1_TX_TIM5_UPD_OVF_TRG_BRK_IRQHandler, 27)
+@svlreg INTERRUPT_HANDLER(USART1_TX_TIM5_UPD_OVF_TRG_BRK_IRQHandler, 27)
 {
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
@@ -452,7 +455,7 @@ INTERRUPT_HANDLER(USART1_TX_TIM5_UPD_OVF_TRG_BRK_IRQHandler, 27)
   * @param  None
   * @retval None
   */
-INTERRUPT_HANDLER(USART1_RX_TIM5_CC_IRQHandler, 28)
+@svlreg INTERRUPT_HANDLER(USART1_RX_TIM5_CC_IRQHandler, 28)
 {
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
@@ -464,7 +467,7 @@ INTERRUPT_HANDLER(USART1_RX_TIM5_CC_IRQHandler, 28)
   * @param  None
   * @retval None
   */
-INTERRUPT_HANDLER(I2C1_SPI2_IRQHandler, 29)
+@svlreg INTERRUPT_HANDLER(I2C1_SPI2_IRQHandler, 29)
 {
   /* Read SR2 register to get I2C error */
   if (I2C_ReadRegister(I2C1, I2C_Register_SR2))
@@ -489,6 +492,8 @@ INTERRUPT_HANDLER(I2C1_SPI2_IRQHandler, 29)
     case I2C_EVENT_SLAVE_BYTE_RECEIVED:
 			if (addr_ok == 1) {
 				if (Rx_Idx == 0) {
+					i2c_buff [0] = 1;
+					count = 1;
 					 inp = I2C_ReceiveData(I2C1);
 						A = inp & 0b11100000; //разбор битов управления и регистров по своим местам
 						D = inp & 0b00001111;
@@ -521,7 +526,8 @@ INTERRUPT_HANDLER(I2C1_SPI2_IRQHandler, 29)
 					}
 				else {
 							Config_reg [D] = I2C_ReceiveData(I2C1);
-							USART_SendData8(USART1, Config_reg [D]);
+							i2c_buff [count] = Config_reg [D];
+							count++;
 							D ++;
 							if (D > ai_end) D = ai_start;
 					}
